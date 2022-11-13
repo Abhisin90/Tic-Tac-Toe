@@ -1,5 +1,5 @@
 const cells = document.querySelectorAll('.grid-item')
-const h1 = document.querySelectorAll('h1')[1]
+const h1 = document.querySelectorAll('h1')[0]
 const restart = document.querySelector('button')
 
 let num = 1
@@ -109,6 +109,7 @@ for (let cell of cells){
                 {
                     fg=1
                     h1.innerHTML = `${cell.innerHTML} won the game!!!`
+                    document.querySelector('.overlay').style.display = 'block'
                 }
             }
         }
@@ -121,8 +122,13 @@ for (let cell of cells){
                 {
                     fg=1
                     h1.innerHTML = `${cell.innerHTML} won the game!!!`
+                    document.querySelector('.overlay').style.display = 'block'
                 }      
-                if(h1.innerHTML==='') h1.innerHTML = "Game Tied"
+                if(h1.innerHTML==='') 
+                {
+                    h1.innerHTML = "Game Tied"
+                    document.querySelector('.overlay').style.display = 'block'
+                }
             } 
         }
         num++
@@ -130,6 +136,7 @@ for (let cell of cells){
 }
 
 restart.addEventListener('click',() => {
+    document.querySelector('.overlay').style.display = 'none'
     window.location.reload();
 })
 
